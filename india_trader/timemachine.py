@@ -47,6 +47,23 @@ def run(replays: int = 10_000, seed: int = 19) -> dict:
     except ValueError:
         start_minute = 9 * 60 + 30
     entry_index = max(3, (start_minute - (9 * 60 + 15)) // 5)
+    historical = {"target_first": 0, "stop_first": 0, "neither": 0}
+    historical_r = []
+    for rows in complete:
+        outcome = "neither"
+        final_price = rows[-1]["close"]
+        for candle in rows[entry_index:]:
+            if candle["low"] <= stop:
+                outcome = "stop_first"
+                historical_r.append(-1.0)
+                break
+            if candle["high"] >= target:
+                outcome = "target_first"
+                historical_r.append((target - entry) / risk)
+                break
+        else:
+            historical_r.append((final_price - entry) / risk)
+        historical[outcome] += 1
     pool_by_index: dict[int, list[dict]] = defaultdict(list)
     for rows in complete:
         for index, candle in enumerate(rows):
@@ -81,6 +98,8 @@ def run(replays: int = 10_000, seed: int = 19) -> dict:
     total = max(1, replays)
     result = {"symbol": symbol, "plan": plan, "model": "same-time-of-day historical candle bootstrap",
               "historical_sessions": len(complete), "bars_from_entry": sum(len(x) for x in pool_by_index.values()) // len(complete),
+              "historical_fixed_level_outcomes": historical,
+              "historical_fixed_level_average_r": round(sum(historical_r) / len(historical_r), 3),
               "replays": replays, "seed": seed, "odds_pct": {k: round(v / total * 100, 2) for k, v in counts.items()},
               "average_r": round(sum(r_values) / len(r_values), 3),
               "caveats": ["not a forecast", "standard-plan lookback limits apply", "slippage, gaps, halts and costs are not modeled", "same-candle stop/target ties count as stop"]}
