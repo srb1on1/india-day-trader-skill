@@ -1,0 +1,5 @@
+symbol,period_end,scope,revenue_inr_cr,operating_profit_inr_cr,net_profit_inr_cr,diluted_eps_inr,source_url,gross_profit_inr_cr
+DEMO,2025-06-30,consolidated,1000,160,110,5.5,https://www.nseindia.com/companies-listing/corporate-filings-financial-results,420
+DEMO,2025-09-30,consolidated,1050,168,115,5.75,https://www.nseindia.com/companies-listing/corporate-filings-financial-results,441
+DEMO,2025-12-31,consolidated,1100,176,121,6.05,https://www.nseindia.com/companies-listing/corporate-filings-financial-results,462
+DEMO,2026-03-31,consolidated,1150,184,126,6.3,https://www.nseindia.com/companies-listing/corporate-filings-financial-results,483
