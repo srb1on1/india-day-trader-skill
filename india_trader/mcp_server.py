@@ -1,4 +1,4 @@
-"""Local Codex MCP server exposing only FYERS quotes and candle history."""
+"""Local Codex MCP server for the read-only India-market research workflow."""
 
 from __future__ import annotations
 
