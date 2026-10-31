@@ -13,6 +13,8 @@ dependencies = [
   "keyring>=25.0.0",
 ]
 
+[project.scripts]
+india-trader = "india_trader.cli:main"
+
 [tool.setuptools.packages.find]
 include = ["india_trader*"]
-
