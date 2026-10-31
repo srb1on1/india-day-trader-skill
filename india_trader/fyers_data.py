@@ -1,4 +1,4 @@
-"""Small read-only FYERS V3 client. Credentials are read from environment only."""
+"""Small read-only FYERS V3 client. Credentials are read from the OS keyring."""
 
 from __future__ import annotations
 
