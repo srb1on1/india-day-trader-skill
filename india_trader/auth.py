@@ -57,11 +57,19 @@ def login() -> None:
     print("FYERS login succeeded. Today's access token is stored in the OS credential store.")
 
 
-if __name__ == "__main__":
+def main(argv=None) -> int:
     import argparse
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("setup", "login"))
-    args = parser.parse_args()
-    setup() if args.action == "setup" else login()
+    args = parser.parse_args(argv)
+    try:
+        setup() if args.action == "setup" else login()
+        return 0
+    except Exception as exc:
+        print(f"FYERS AUTH FAILED: {exc}")
+        return 2
 
+
+if __name__ == "__main__":
+    raise SystemExit(main())
