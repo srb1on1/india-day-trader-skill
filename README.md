@@ -50,5 +50,5 @@ The initial version analyzes data and prepares hypothetical plans only. It does 
 
 ## Status
 
-Research-backed project starter. Not yet connected to a live FYERS account, tested against the user's local SDK/token, or published to GitHub. No credentials belong in this repository.
+Research-backed project starter, published as a private GitHub repository. It has not yet been connected to a live FYERS account or validated against the user's local SDK/token. No credentials belong in this repository.
 
