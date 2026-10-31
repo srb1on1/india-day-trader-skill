@@ -59,10 +59,12 @@ def check() -> dict:
     symbols = list(dict.fromkeys(r["symbol"] for r in price_rules))
     quotes_by_symbol = {}
     if symbols:
-        response = FyersData().quotes(symbols[:50])
-        for item in response.get("d", []) or []:
-            values = item.get("v", {})
-            quotes_by_symbol[item.get("n", "")] = values.get("lp")
+        client = FyersData()
+        for offset in range(0, len(symbols), 50):
+            response = client.quotes(symbols[offset:offset + 50])
+            for item in response.get("d", []) or []:
+                values = item.get("v", {})
+                quotes_by_symbol[item.get("n", "")] = values.get("lp")
     for rule in price_rules:
         key = f"{rule.get('id')}|{now.date().isoformat()}"
         if key in fired_keys or (rule.get("date") and rule["date"] != now.date().isoformat()):
