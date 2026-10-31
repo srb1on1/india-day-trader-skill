@@ -1,0 +1,20 @@
+{
+  "exchange": "NSE",
+  "watchlist": ["NSE:INFY-EQ", "NSE:RELIANCE-EQ", "NSE:HDFCBANK-EQ"],
+  "extra_market_holidays": [],
+  "cash_budget_inr": 100000,
+  "cash_buffer_pct": 10,
+  "max_loss_per_trade_inr": 500,
+  "max_daily_loss_inr": 1500,
+  "max_position_pct": 25,
+  "max_order_inr": 50000,
+  "min_order_inr": 500,
+  "minimum_reward_risk": 1.5,
+  "max_trades_per_day": 3,
+  "max_orders_per_day": 3,
+  "cost_buffer_pct": 0,
+  "blocked": [],
+  "allow_short": false,
+  "allow_options": false,
+  "paper": true
+}
